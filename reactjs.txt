@@ -1,0 +1,269 @@
+
+contacts.js
+
+
+
+import React,{Component} from 'react';
+export class Contacts extends Component
+{
+    render()
+    {
+        return(
+            <div>
+               <ContactsChild></ContactsChild>
+                this is a demo
+                </div>
+        );
+        
+    }
+};
+export class ContactsChild extends Component{
+    render()
+    {
+        return(
+            <h1>{5+6}</h1>
+            );
+        
+    }
+};
+
+
+
+ex for array:
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+//import { Contacts} from './component/Contacts';
+export class Contacts extends Component
+{
+    constructor(props)
+    {
+    super (props)
+    {
+
+    }
+    this.state={
+                    data:[
+                            {name:"abc",team:"des",desg:"engineer"},
+                            {name:"def",team:"elc",desg:"senior engineer"},
+                            {name:"ghi",team:"bcbs",desg:"ceo"}
+                        ]
+                };
+}
+    render()
+    {
+        return(
+            <div>
+            emp1 are {this.state.data.map((name1,i)=>
+            <ul>
+                <li>{name1.name}</li>
+                <li>{name1.team}</li> <li>{name1.desg}</li>
+            </ul>
+            )}
+                </div>
+        );
+        
+    }
+};
+
+25-7-19
+--------
+
+
+
+
+ex for keys :
+
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+//import { Contacts} from './component/Contacts';
+export class Contacts extends Component
+{
+    constructor(props)
+    {
+    super (props)
+    {
+
+    }
+    this.state={
+            data:[
+                {name:"abc",dept:"elc"},
+                {name:"def",dept:"bcbs"},
+                {name:"ghi",dept:"bb"}
+            ]
+    }
+    }
+    
+    render()
+    {
+        return(
+            
+            <div>
+                {this.state.data.map((employees,index)=>(<ul><li key={index}>{employees.name}</li>
+                <li key={index}>{employees.dept}</li></ul>))}
+            </div>        
+              );
+        }
+index.js:
+
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+//import { Contacts} from './component/Contacts';
+export class Contacts extends Component
+{
+    constructor(props)
+    {
+    super (props)
+    {
+
+    }
+    this.state={
+            data:[
+                {name:"abc",dept:"elc"},
+                {name:"def",dept:"bcbs"},
+                {name:"ghi",dept:"bb"}
+            ]
+    }
+    }
+    
+    render()
+    {
+        return(
+            
+            <div>
+                {this.state.data.map((employees,index)=>(<ul><li key={index}>{employees.name}</li>
+                <li key={index}>{employees.dept}</li></ul>))}
+            </div>        
+              );
+        }
+    };
+    };
+
+
+
+examples for routing:
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+import {Home} from './component/ComponentsWithRoutes/Home.js';
+import {Users} from './component/ComponentsWithRoutes/Users.js';
+import {ContactUs} from './component/ComponentsWithRoutes/ContactUs.js';
+
+import * as serviceWorker from './serviceWorker';
+const Routing=(
+    <Router>
+        <div>
+            <Route path="/" component={Home}></Route>
+            <Route path="/user" component={Users}></Route>
+            <Route path="/cs" component={ContactUs}></Route>
+        </div>
+    </Router>
+                )
+
+ReactDOM.render(Routing , document.getElementById('root'));
+
+serviceWorker.unregister();
+
+
+example for links:
+
+index.js:
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+import {Home} from './component/ComponentsWithRoutes/Home.js';
+import {Users} from './component/ComponentsWithRoutes/Users.js';
+import {ContactUs} from './component/ComponentsWithRoutes/ContactUs.js';
+
+import * as serviceWorker from './serviceWorker';
+const Routing = (
+    <Router>
+        <div>
+           <li> <Link to="/">Home</Link></li>
+            <li><Link to="/user" >Users</Link></li>
+            <li><Link to="/cs" >ContactUs</Link></li>
+        
+        <Route exact path="/" component={Home}></Route>
+        <Route path="/user" component={Users}></Route>
+        <Route path="/cs" component={ContactUs}></Route>
+           
+        </div>
+    </Router>
+                )
+
+ReactDOM.render(Routing , document.getElementById('root'));
+
+serviceWorker.unregister();
+
+
+home.js:
+import React from 'react'
+export class Home extends React.Component{
+        render()
+            {
+                    return(
+                    <div>
+                        <h1>HOME</h1>
+                    </div>
+                    );
+               }
+}
+
+user.js:
+import React from 'react'
+export class Users extends React.Component{
+        render()
+            {
+                    return(
+                    <div>
+                        <h1>Users</h1>
+                    </div>
+                    
+                    );
+               }
+}
+
+contactus.js:
+import React from 'react'
+export class ContactUs extends React.Component{
+        render()
+            {
+                    return(
+                    <div>
+                        <h1>ContactUs</h1>
+                    </div>
+                    );
+               }
+}
+
+example for navlink:
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+import {BrowserRouter as Router,Route,Link,NavLink} from 'react-router-dom';
+import {Home} from './component/ComponentsWithRoutes/Home.js';
+import {Users} from './component/ComponentsWithRoutes/Users.js';
+import {ContactUs} from './component/ComponentsWithRoutes/ContactUs.js';
+import './Cssfile/Router.css';
+import * as serviceWorker from './serviceWorker';
+const Routing = (
+    <Router>
+        <div>
+           <li> <NavLink exact activeClassName= "active" to="/">Home</NavLink></li>
+            <li><NavLink activeClassName="active" to="/user" >Users</NavLink></li>
+            <li><NavLink activeClassName= "active" to="/cs" >ContactUs</NavLink></li>
+        
+        <Route exact path="/" component={Home}></Route>
+        <Route path="/user" component={Users}></Route>
+        <Route path="/cs" component={ContactUs}></Route>
+           
+        </div>
+    </Router>
+                )
+
+ReactDOM.render(Routing , document.getElementById('root'));
+
+serviceWorker.unregister();
+
+cssfile.css
+.active{
+  color:pink;
+}
